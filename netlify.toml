@@ -1,0 +1,15 @@
+[build]
+  # Si tu sitio es HTML/CSS/JS estático simple, no necesitas comando de build.
+  # Si usas un framework (Vite, React, etc.) cambia esto por tu comando real,
+  # ej: command = "npm run build"  y publish = "dist"
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Redirige /api/chat -> la función serverless, para una URL más limpia en el front
+[[redirects]]
+  from = "/api/chat"
+  to = "/.netlify/functions/chat"
+  status = 200
